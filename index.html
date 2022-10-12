@@ -4,8 +4,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="main.css" rel="stylesheet" media="all">
-    <meta name="description" content="Joint-AEC-Beamformer" />
-    <meta name="keywords" content="acoustic echo cancellation, muti-channel processing, deep neural networks, beamforming, speech enhancement">
+    <meta name="description" content="Subband-Beamformer" />
+    <meta name="keywords" content="subband processing, muti-channel processing, deep neural networks, beamforming, speech separation">
     <script>
     function buttonSwitch(id, text) {
         old_src = document.getElementById(id).src;
@@ -13,7 +13,7 @@
         document.getElementById(id).src = old_src.substr(0, ind + 1) + text;
     }
     </script>
-    <title>Joint-AEC-and-Beamforming</title>
+    <title>Subband-Beamformer</title>
 </head>
 
 
@@ -25,23 +25,20 @@
     </div>
     
     <!-- <p  style="margin-bottom:3cm;">"  "</p> -->
-    <h2 id="title" class="auto-style1"><center> Joint Neural AEC and Beamforming with Double-Talk Detection </center></h2>
+    <h2 id="title" class="auto-style1"><center> A Mel-Scale Subband Spatio-Temporal RNN Beamformer </center></h2>
     <p class="auto-style7" align="center">
         <a href="https://github.com/vkothapally" target="_blank">Vinay Kothapally</a>
-        <sup>1</sup> &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
         <a href="https://scholar.google.com/citations?user=nCmKPM4AAAAJ&hl=en&oi=ao" target="_blank">Yong Xu</a>
-        <sup>2</sup> &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
         <a href="https://scholar.google.com/citations?user=pxFJcEEAAAAJ&hl=en&oi=ao" target="_blank">Meng Yu</a>
-        <sup>3</sup> &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
         <a href="https://scholar.google.com/citations?user=4nGncN4AAAAJ&hl=en" target="_blank">Shi-Xiong Zhang</a>
-        <sup>4</sup> &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
         <a href="https://scholar.google.com/citations?user=tMY31_gAAAAJ&hl=en" target="_blank">Dong Yu</a>
-        <sup>5</sup> &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
     </p>
-    <p class="auto-style7" align="center">
-        Center for Robust Speech Systems (CRSS), The University of Texas at Dallas, Texas, USA<sup>1</sup>, &nbsp;
-        Tencent AI Lab, Bellevue, WA, USA<sup>2,3,4,5</sup> 
-    </p>
+    <p class="auto-style7" align="center">Tencent AI Lab, Bellevue, WA, USA</p>
 
 
     <!--<p class="auto-style7"  align="center">&nbsp;&nbsp;&nbsp; </p>-->
@@ -50,7 +47,7 @@
 
         <!-- Image with description -->
         <table style="width:1250px" align="center">
-            <tr><td><center><img width=1250px alt="" src="figures/proposed_network.png"></center></td></tr>
+            <tr><td><center><img width=1250px alt="" src="figures/Overview.png"></center></td></tr>
             <tr><td><p align="center" class="auto-style5-j">Figure 1. Architectural detials of all deep learning based joint echo cancellation and beamformer trained using time-domain scale-invariant SNR.</p></td></tr>
         </table>
 
