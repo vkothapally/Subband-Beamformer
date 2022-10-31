@@ -15,19 +15,20 @@ While current deep learning (DL)-based beamforming techniques have been proved e
 
 
 
-## Problem Statement
+<h2 id = "1"><u>Problem Statement</u></h2>
+
 ### [M-Microphone N-Speaker Separation with Low Computations and Faster Inference]
 <img src="./data/model/Overview.png" alt="flowtron_0.0" style="zoom: 70%;" /> 
 
 While current deep learning (DL)-based beamforming techniques have been proved effective in speech separation, they are often designed to process narrow-band (NB) frequencies independently which results in higher computational costs and inference times, making them unsuitable for real-world use. In this paper, we propose DL-based mel-subband spatio-temporal beamformer to perform speech separation in a car environment with reduced computation cost and inference time. As opposed to conventional subband (SB) approaches, our framework uses a mel-scale based subband selection strategy which ensures a fine-grained processing for lower frequencies where most speech formant structure is present 
 
 
-## Real-World Recording Setup for In-Car Speech Capture   
+<h2 id = "1"><u>Real-World Recording Setup for In-Car Speech Capture</u></h2>
 
 | <img src="./data/model/Overview.png" alt="flowtron_0.0" style="zoom: 43%;" /> | <img src="./data/model/Overview.png" alt="flowtron_0.0" style="zoom: 43%;" /> | <img src="./data/model/Overview.png" alt="flowtron_0.0" style="zoom: 43%;" /> | <img src="./data/model/Overview.png" alt="flowtron_0.0" style="zoom: 43%;" /> |
 
 
-## Proposed Subband Beamforming -- All Neural Network Architecture
+<h2 id = "1"><u>Proposed Subband Beamforming -- All Neural Network Architecture</u></h2>
 
 |  **Neural Architecture**                                     |
 | :----------------------------------------------------------: |
@@ -39,7 +40,8 @@ While current deep learning (DL)-based beamforming techniques have been proved e
 
 
 
-## Audio samples processed by various DL-based beamformers
+<h2 id = "1"><u>Audio samples processed by various DL-based beamformers</u></h2>
+
 ### [Includes Narrow-band (NB), Full-band (FB), and Sub-band (SB) based approaches]
 
 |       **Audio sample illustrated in the  paper**             |                                                              |                                                              |                                                              |
@@ -54,7 +56,7 @@ While current deep learning (DL)-based beamforming techniques have been proved e
 
 
 
-## Audio Demo(s) from Simulated In-Car Speech Capture (Test Set)
+<h2 id = "1"><u>Audio Demo(s) from Simulated In-Car Speech Capture (Test Set)</u></h2>
 
 |       **Available Speakers [S1, S2, S3]**                    | **Mixture SNR: -10 dB, SER: -10 dB**                         |                                                              |                                                              |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
@@ -69,7 +71,7 @@ While current deep learning (DL)-based beamforming techniques have been proved e
 
 
 
-## Audio Demo(s) from Real-World In-Car Speech Capture
+<h2 id = "1"><u>Audio Demo(s) from Real-World In-Car Speech Capture</u></h2>
 
 |       **Available Speakers [S1, S2, S3]**                    | **Mixture SNR: -10 dB, SER: -10 dB**                         |                                                              |                                                              |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
