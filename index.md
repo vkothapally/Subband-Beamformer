@@ -56,7 +56,7 @@ While current deep learning (DL)-based beamforming techniques have been proved e
 
 
 
-<h2 id = "1"><u>Audio Demo(s) from Simulated In-Car Speech Capture (Test Set)</u></h2>
+<h2 id = "1"><u>Processed Audio Samples of Simulated Recordings (Test Set)</u></h2>
 
 |       **Available Speakers [S1, S2, S3]**                    | **Mixture SNR: -10 dB, SER: -10 dB**                         |                                                              |                                                              |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
@@ -71,7 +71,7 @@ While current deep learning (DL)-based beamforming techniques have been proved e
 
 
 
-<h2 id = "1"><u>Audio Demo(s) from Real-World In-Car Speech Capture</u></h2>
+<h2 id = "1"><u>Processed Audio Samples of Real In-Car Recordings</u></h2>
 
 |       **Available Speakers [S1, S2, S3]**                    | **Mixture SNR: -10 dB, SER: -10 dB**                         |                                                              |                                                              |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
