@@ -23,9 +23,9 @@ While current deep learning (DL)-based beamforming techniques have been proved e
 While current deep learning (DL)-based beamforming techniques have been proved effective in speech separation, they are often designed to process narrow-band (NB) frequencies independently which results in higher computational costs and inference times, making them unsuitable for real-world use. In this paper, we propose DL-based mel-subband spatio-temporal beamformer to perform speech separation in a car environment with reduced computation cost and inference time. As opposed to conventional subband (SB) approaches, our framework uses a mel-scale based subband selection strategy which ensures a fine-grained processing for lower frequencies where most speech formant structure is present 
 
 
-<h2 id = "1"><u>Real-World Recording Setup for In-Car Speech Capture</u></h2>
+<!-- <h2 id = "1"><u>Real-World Recording Setup for In-Car Speech Capture</u></h2>
 
-| <img src="./data/model/Overview.png" alt="flowtron_0.0" style="zoom: 43%;" /> | <img src="./data/model/Overview.png" alt="flowtron_0.0" style="zoom: 43%;" /> | <img src="./data/model/Overview.png" alt="flowtron_0.0" style="zoom: 43%;" /> | <img src="./data/model/Overview.png" alt="flowtron_0.0" style="zoom: 43%;" /> |
+| <img src="./data/model/Overview.png" alt="flowtron_0.0" style="zoom: 43%;" /> | <img src="./data/model/Overview.png" alt="flowtron_0.0" style="zoom: 43%;" /> | <img src="./data/model/Overview.png" alt="flowtron_0.0" style="zoom: 43%;" /> | <img src="./data/model/Overview.png" alt="flowtron_0.0" style="zoom: 43%;" /> | -->
 
 
 <h2 id = "1"><u>Proposed Subband Beamforming -- All Neural Network Architecture</u></h2>
