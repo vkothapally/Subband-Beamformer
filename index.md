@@ -56,7 +56,7 @@ While current deep learning (DL)-based beamforming techniques have been proved e
 | <img src="./data/with_reverb/example275/fullsubnet++.png" alt="flowtron_0.0" style="zoom: 40%;" /> | <img src="./data/with_reverb/example275/clean.png" alt="flowtron_0.0" style="zoom: 40%;" /> | <img src="./data/with_reverb/example275/fullsubnet++.png" alt="flowtron_0.0" style="zoom: 40%;" /> | <img src="./data/with_reverb/example275/clean.png" alt="flowtron_0.0" style="zoom: 40%;" /> |
 
 
-
+<br><br><br><br>
 
 <h2 id = "1"><u>Processed Audio Samples of Simulated Recordings (Test Set)</u></h2>
 
@@ -71,7 +71,7 @@ While current deep learning (DL)-based beamforming techniques have been proved e
 
 
 
-
+<br><br><br><br>
 
 <h2 id = "1"><u>Processed Audio Samples of Real In-Car Recordings</u></h2>
 
