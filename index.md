@@ -36,7 +36,7 @@ While current deep learning (DL)-based beamforming techniques have been proved e
 
 |  **Tensor Dimensions for each step within the Network**      |
 | :----------------------------------------------------------: |
-| <img src="./data/model/Tensor_Chart.png" alt="flowtron_0.0" style="zoom: 150%;" /> |
+| <img src="./data/model/Tensor_Chart_Subband_Beamformer.png" alt="flowtron_0.0" style="zoom: 150%;" /> |
 
 
 
