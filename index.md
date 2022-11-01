@@ -34,7 +34,6 @@ While current deep learning (DL)-based beamforming techniques have been proved e
 |  **Neural Architecture**                                     |
 | :----------------------------------------------------------: |
 | <img src="./data/model/Network.png" alt="flowtron_0.0" style="zoom: 180%;" /> |
-<br><br>
 
 |  **Tensor Dimensions for each step within the Network**      |
 | :----------------------------------------------------------: |
