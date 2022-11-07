@@ -46,7 +46,7 @@ While current deep learning (DL)-based beamforming techniques have been proved e
 
 |  **Restults for Submitted Paper**                                     |
 | :----------------------------------------------------------: |
-| <img src="./data/model/Results.png" alt="flowtron_0.0" style="zoom: 150%;" /> |
+| <img src="./data/model/Results.png" alt="flowtron_0.0" style="zoom: 180%;" /> |
 
 <br><br><br><br>
 
