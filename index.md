@@ -19,9 +19,7 @@ While current deep learning (DL)-based beamforming techniques have been proved e
 
 ### [M-Microphone N-Speaker Separation with Low Computations and Faster Inference]
 <img src="./data/model/Overview.png" alt="flowtron_0.0" style="zoom: 70%;" /> 
-
-While current deep learning (DL)-based beamforming techniques have been proved effective in speech separation, they are often designed to process narrow-band (NB) frequencies independently which results in higher computational costs and inference times, making them unsuitable for real-world use. In this paper, we propose DL-based mel-subband spatio-temporal beamformer to perform speech separation in a car environment with reduced computation cost and inference time. As opposed to conventional subband (SB) approaches, our framework uses a mel-scale based subband selection strategy which ensures a fine-grained processing for lower frequencies where most speech formant structure is present 
-
+We consider the problem of In-car "N"-speaker speech separation using "M"-channel microphone array with the assumption that only one speaker is present in each zone and is permitted to move within a designated zone while speaking. We divide the space inside the car into a total of 4 zones.
 <br><br><br><br>
 
 <!-- <h2 id = "1"><u>Real-World Recording Setup for In-Car Speech Capture</u></h2>
