@@ -41,6 +41,16 @@ While current deep learning (DL)-based beamforming techniques have been proved e
 
 <br><br><br><br>
 
+
+<h2 id = "1"><u>Improvements in Speech Quality Metircs and Back-end Speech Recognition Application</u></h2>
+
+|  **Restults for Submitted Paper**                                     |
+| :----------------------------------------------------------: |
+| <img src="./data/model/Results.png" alt="flowtron_0.0" style="zoom: 150%;" /> |
+
+<br><br><br><br>
+
+
 <h2 id = "1"><u>Audio samples processed by various DL-based beamformers</u></h2>
 
 ### [Includes Narrow-band (NB), Full-band (FB), and Sub-band (SB) based approaches]
@@ -101,7 +111,7 @@ While current deep learning (DL)-based beamforming techniques have been proved e
 
 <!-- Three Speakers -->
 
-|       **Three Speakers present in Car [S1,S2,S3]**           |   **Mixture SNR: -8.419 dB, PESQ: 1.657**                    |                                                              |                                                              |
+|       **Three Speakers present in Car [S1,S2,S3]**           |   **Mixture SNR: -8.419 dB, PESQ: 1.657**                    |             **---- [Moderate SNR Condition]**                |                                                              |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | **Mixture** <br><audio controls><source src="./data/audiofiles/3spk/mix_1.wav" type="audio/wav">Your browser does not support the audio element.</audio> | **ConvTasNet (FB)** <br>  <audio controls><source src="./data/audiofiles/3spk/ConvTasNet_Zone1_1.wav" type="audio/wav">Your browser does not support the audio element.</audio> | **LSTM+Attention (FB)** <br><audio controls><source src="./data/audiofiles/3spk/LSTM_Zone1_1.wav" type="audio/wav">Your browser does not support the audio element.</audio> | **GRNNBF (FB)** <br>  <audio controls><source src="./data/audiofiles/3spk/FB_GRNNBF_Zone1_1.wav" type="audio/wav">Your browser does not support the audio element.</audio> |
 | <img src="./data/spectrograms/3spk/mix_1.png" alt="flowtron_0.0" style="zoom: 40%;" /><br><strong>PESQ: 1.449  &nbsp;&nbsp; SiSNR: -01.098 dB<strong> | <img src="./data/spectrograms/3spk/ConvTasNet_Zone1_1.png" alt="flowtron_0.0" style="zoom: 40%;" /><br><strong>PESQ: 3.081  &nbsp;&nbsp; SiSNR: 15.017 dB | <img src="./data/spectrograms/3spk/LSTM_Zone1_1.png" alt="flowtron_0.0" style="zoom: 40%;" /><br><strong>PESQ: 2.860  &nbsp;&nbsp; SiSNR: 13.979 dB | <img src="./data/spectrograms/3spk/FB_GRNNBF_Zone1_1.png" alt="flowtron_0.0" style="zoom: 40%;" /><br><strong>PESQ: 2.829  &nbsp;&nbsp; SiSNR: 14.163 dB |
