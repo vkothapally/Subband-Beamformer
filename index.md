@@ -19,6 +19,7 @@ While current deep learning (DL)-based beamforming techniques have been proved e
 
 ### [M-Microphone N-Speaker Separation with Low Computations and Faster Inference]
 <img src="./data/model/Overview.png" alt="flowtron_0.0" style="zoom: 70%;" /> 
+
 We consider the problem of In-car "N"-speaker speech separation using "M"-channel microphone array with the assumption that only one speaker is present in each zone and is permitted to move within a designated zone while speaking. We divide the space inside the car into a total of 4 zones. The model trained is ensured to be robust to in-car noise(s) such as background noise (music/speech from loudspeaker), reverberation, and overlapping speaker speech.
 <br><br><br><br>
 
