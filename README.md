@@ -1,6 +1,6 @@
-# JOINT-AEC-AND-BEAMFORMING (JAECBF with DTD)
+# A Mel-scale based Subband Beamformer for In-Car Speech Separation
 
 
-An all-deep-learning framework that combines multi-channel AEC and Self-Attentive Recurrent Neural Network (RNN) beamformer.
+An all-deep-learning framework Subband Spatio-Temporal Beamforming
 
-For Audio Samples, please visit https://vkothapally.github.io/JAECBF/
+For Audio Samples, please https://vkothapally.github.io/Subband-Beamformer/
