@@ -1,6 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
+<style>
+  .bottom-three {
+      margin-bottom: 5cm;
+  }
+</style>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="main.css" rel="stylesheet" media="all">
@@ -44,28 +48,42 @@
     <p align="center">
 
         <!-- Image with description -->
-        <table style="width:1250px" align="center">
-            <tr><td><center><img width=1250px alt="" src="figures/proposed_network.png"></center></td></tr>
-            <tr><td><p align="center" class="auto-style5-j">Figure 1. Architectural detials of all deep learning based joint echo cancellation and beamformer trained using time-domain scale-invariant SNR.</p></td></tr>
+        <!-- Abstract -->
+        <table style="width:450px" align="center">
+          <p class="auto-style5">&nbsp;</p>
+          <p class="style2", style="color:blue;"><strong><span class="auto-style6"><u>Problem Defintion</u></span></strong></p>
+          <tr><td><center><img width=450px alt="" src="figures/Overview.png"></center></td></tr>
+          <tr><td><p align="center" class="auto-style5-j">Figure 2. In-Car Speech Separation Task using only 2-Microphones</p></td></tr>
+          <p align="justify" class="auto-style5-j" >
+            We consider the problem of In-car "N"-speaker speech separation using "M"-channel microphone array with the assumption that only one speaker is present in each zone and is permitted to move within a designated zone while speaking. We divide the space inside the car into a total of 4 zones. The model trained is ensured to be robust to in-car noise(s) such as background noise (music/speech from loudspeaker), reverberation, and overlapping speaker speech.
+          </p>
         </table>
-
+        
         <!-- Abstract -->
         <p class="auto-style5">&nbsp;</p>
         <p class="style2", style="color:blue;"><strong><span class="auto-style6"><u>Abstract</u></span></strong></p>
         <p align="justify" class="auto-style5-j">
-          Acoustic echo cancellation (AEC) in full-duplex communication systems eliminates acoustic feedback. However, nonlinear distortions induced by audio devices, background noise, reverberation, and double-talk reduce the efficiency of conventional AEC systems. Several hybrid AEC models were proposed to address this, which use deep learning models to suppress residual echo from standard adaptive filtering. This paper proposes deep learning-based joint AEC and beamforming model (JAECBF) building on our previous self-attentive recurrent neural network (RNN) beamformer. The proposed network consists of two modules: (i) multi-channel neural-AEC, and (ii) joint AEC-RNN beamformer with a double-talk detection (DTD) that computes time-frequency (T-F) beamforming weights. We train the proposed model in an end-to-end approach to eliminate background noise and echoes from far-end audio devices, which include nonlinear distortions. From experimental evaluations, we find the proposed network outperforms other multi-channel AEC and denoising systems in terms of speech recognition rate and overall speech quality.
+          While current deep learning (DL)-based beamforming techniques have been proved effective in speech separation, they are often designed to process narrow-band (NB) frequencies independently which results in higher computational costs and inference times, making them unsuitable for real-world use. In this paper, we propose DL-based mel-subband spatio-temporal beamformer to perform speech separation in a car environment with reduced computation cost and inference time. As opposed to conventional subband (SB) approaches, our framework uses a mel-scale based subband selection strategy which ensures a fine-grained processing for lower frequencies where most speech formant structure is present, and coarse-grained processing for higher frequencies. In a recursive way, robust frame-level beamforming weights are determined for each speaker location/zone in a car from the estimated subband speech and noise covariance matrices. Furthermore, proposed framework also estimates and suppresses any echoes from the loudspeaker(s) by using the echo reference signals. We compare the performance of our proposed framework to several NB, SB, and full-band (FB) processing techniques in terms of speech quality and recognition metrics. Based on experimental evaluations on simulated and real-world recordings, we find that our proposed framework achieves better separation performance over all SB and FB approaches and achieves performance closer to NB processing techniques while requiring lower computing cost.
         </p>
+        
+        <!-- Image with description -->
+        <p class="auto-style5">&nbsp;</p>
+        <p class="style2", style="color:blue;"><strong><span class="auto-style6"><u>Proposed Mel-Subband Beamformer</u></span></strong></p>
+        <table style="width:1250px" align="center">
+            <tr><td><center><img width=1250px alt="" src="figures/Network.png"></center></td></tr>
+            <tr><td><p align="center" class="auto-style5-j">Figure 1. An overview of the proposed all deep learning-based speech separation system for in-car applications</p></td></tr>
+        </table>
 
-
+        
         <!-- Key Contributions -->
         <p class="auto-style5">&nbsp;</p>
         <p class="style2", style="color:blue;"><strong><span class="auto-style6"><u>Key contributions</u></span></strong></p>
         <p align="justify" class="auto-style5-j">
-        Our main contributions towards the proposed all-deep-learning (ADL) Joint AEC and Beamforming system are summarized as follows:
+        Our main contributions towards the proposed Deep Neural Mel-Subband Beamformer system are summarized as follows:
         <ol>
-          <li>We propose using a joint spatial covariance matrix computed using microphone signals and far-end speech as input features, which accounts for cross-correlation between far-end speech and multiple microphones, essential for designing an efficient multi-channel AEC system.</li>
-          <li>We extend our recently proposed generalized spatio-temporal RNN beamformer (GRNNBF) to a joint spatio-temporal AEC-beamformer (JAECBF) for handling AEC and beamforming simultaneously using original and AEC processed signals.</li>
-          <li>We employ a double-talk detection (DTD) module based on the multi-head attention and recurrent networks, that computes attention over time while leveraging double-talk detection to suppress far-end residuals.</li>
+          <li>We aim to reduce the computational cost of beamformer while preserving the back-end speech application performances as much as we can.</li>
+          <li>We extend our recently proposed joint spatio-temporal AEC-beamformer (JAECBF) which can handle AEC and beamforming simultaneously using unprocessed microphone signals and AEC processed signals.</li>
+          <li>We propose a Mel-scale and convolutional based subband analysis and synthesis filters to perform beamforming in subband domain to reduce the overall computations for faster inferences.</li>
         </ol>
         </p>
 
@@ -73,7 +91,7 @@
         <p class="auto-style5">&nbsp;</p>
         <p class="style2", style="color:blue;"><strong><span class="auto-style6"><u>Python Scripts</u></span></strong></p>
         <ol>
-          <li>Proposed Joint AEC Beamformer model script (<a href="https://github.com/vkothapally/JOINT-AEC-AND-BEAMFORMING/blob/main/src/model.py" target="_blank">model.py</a>)</li>
+          <li>Proposed Mel-Scale Subband Beamformer model script (<a href="https://github.com/vkothapally/JOINT-AEC-AND-BEAMFORMING/blob/main/src/model.py" target="_blank">model.py</a>)</li>
           <li>Run "python model.py" to print architectural details for the proposed netowrk
         </ol>
 
@@ -81,7 +99,7 @@
         <p class="auto-style5">&nbsp;</p>
         <p class="style2", style="color:blue;"><strong><span class="auto-style6"><u>Model Architecture</u></span></strong></p>
         <p align="justify" class="auto-style5-j">
-        <center><img src="figures/Model_Arch_v2.png" width="940" /></center>
+        <center><img src="figures/Tensor_Chart_Subband_Beamformer.png" width="940" /></center>
         </p>
 
 
@@ -90,452 +108,214 @@
         <p class="auto-style5">&nbsp;</p>
         <p class="style2", style="color:blue;"><strong><span class="auto-style6"><u>Results on speech quality metrics and word error rate (WER)</u></span></strong></p>
         <p align="justify" class="auto-style5-j">
-        <center><img src="results/Results_Table_AEC_BF.png" width="940" /></center>
+        <center><img src="figures/Results.png" width="940" /></center>
         </p>
 
 
         <!-- Performance -->
         <p class="auto-style5">&nbsp;</p>
-        <p id="performance" , class="auto-style4", style="color:blue;"><strong><u>Enhanced audio samples from various Systems in the study</u></strong></p>
+        <p id="performance" , class="auto-style4", style="color:blue;"><strong><u>Separated Speech Signals using various approaches in the study</u></strong></p>
 
         
-        <!-- Audio 01 -->
+        <!-- Audio 01 -----------------------------------------------------------------------------------------------------------------------> 
+        <center>
+          <table width="1500" border="1">
+            <td width="300">
+              <p><center><img src="Demo/spectrograms/3spk/mix_1.png" width="290" /></center></p>
+              <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/mix_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+              <p><center><strong>No Processing (Mixture)</strong></center></p>
+              <p><center><strong>Speakers Available in Zone-1, Zone-3, and Zone-4</strong></center></p>
+            </td>
+          </table>
+        </center>
         <center>
         <table width="1500" border="1">
           <td width="300">
-            <p><center><img src="specs/01_NP.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/01_NP.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>No Processing</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/Ref_Zone1_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/Ref_Zone1_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>Reference (S1)</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/01_Speex_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/01_Speex_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>SpeexDSP + JAECBF</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/Ref_Zone2_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/Ref_Zone2_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>Reference (S2)</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/01_FTLSTM_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/01_FTLSTM_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>FTLSTM + JAECBF</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/Ref_Zone3_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/Ref_Zone3_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>Reference (S3)</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/01_Proposed.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/01_Proposed.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Proposed JAECBF w. DTD</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/01_CleanRef.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/01_CleanRef.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Reverberant Near-End Clean Speech</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/Ref_Zone4_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/Ref_Zone4_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>Reference (S4)</strong></center></p>
           </td>
         </table>
-        </center>
+      </center>
 
-
-        <!-- Audio 02 -->
-        <center>
+      <center>
         <table width="1500" border="1">
           <td width="300">
-            <p><center><img src="specs/02_NP.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/02_NP.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>No Processing</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/LSTM_Zone1_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/LSTM_Zone1_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Full-Band LSTM+MHSA] Zone-1/S1</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/02_Speex_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/02_Speex_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>SpeexDSP + JAECBF</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/LSTM_Zone2_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/LSTM_Zone2_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Full-Band LSTM+MHSA] Zone-2/S2</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/02_FTLSTM_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/02_FTLSTM_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>FTLSTM + JAECBF</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/LSTM_Zone3_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/LSTM_Zone3_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Full-Band LSTM+MHSA] Zone-3/S3</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/02_Proposed.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/02_Proposed.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Proposed JAECBF w. DTD</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/02_CleanRef.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/02_CleanRef.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Reverberant Near-End Clean Speech</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/LSTM_Zone4_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/LSTM_Zone4_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Full-Band LSTM+MHSA] Zone-4/S4</strong></center></p>
           </td>
         </table>
-        </center>
-
-
-
-        <!-- Audio 03 -->
-        <center>
+      </center>
+      
+      <center>
         <table width="1500" border="1">
           <td width="300">
-            <p><center><img src="specs/03_NP.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/03_NP.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>No Processing</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/ConvTasNet_Zone1_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/ConvTasNet_Zone1_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Full-Band ConvTasNet] Zone-1/S1</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/03_Speex_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/03_Speex_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>SpeexDSP + JAECBF</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/ConvTasNet_Zone2_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/ConvTasNet_Zone2_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Full-Band ConvTasNet] Zone-2/S2</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/03_FTLSTM_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/03_FTLSTM_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>FTLSTM + JAECBF</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/ConvTasNet_Zone3_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/ConvTasNet_Zone3_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Full-Band ConvTasNet] Zone-3/S3</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/03_Proposed.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/03_Proposed.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Proposed JAECBF w. DTD</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/03_CleanRef.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/03_CleanRef.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Reverberant Near-End Clean Speech</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/ConvTasNet_Zone4_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/ConvTasNet_Zone4_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Full-Band ConvTasNet] Zone-4/S4</strong></center></p>
           </td>
         </table>
-        </center>
+      </center>
 
 
-        <!-- Audio 04 -->
-        <center>
+      <center>
         <table width="1500" border="1">
           <td width="300">
-            <p><center><img src="specs/04_NP.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/04_NP.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>No Processing</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/FB_GRNNBF_Zone1_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/FB_GRNNBF_Zone1_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Full-Band GRNNBF] Zone-1/S1</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/04_Speex_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/04_Speex_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>SpeexDSP + JAECBF</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/FB_GRNNBF_Zone2_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/FB_GRNNBF_Zone2_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Full-Band GRNNBF] Zone-2/S2</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/04_FTLSTM_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/04_FTLSTM_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>FTLSTM + JAECBF</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/FB_GRNNBF_Zone3_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/FB_GRNNBF_Zone3_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Full-Band GRNNBF] Zone-3/S3</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/04_Proposed.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/04_Proposed.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Proposed JAECBF w. DTD</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/04_CleanRef.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/04_CleanRef.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Reverberant Near-End Clean Speech</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/FB_GRNNBF_Zone4_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/FB_GRNNBF_Zone4_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Full-Band GRNNBF] Zone-4/S4</strong></center></p>
           </td>
         </table>
-        </center>
+      </center>
 
-
-        <!-- Audio 05 -->
-        <center>
+      <center>
         <table width="1500" border="1">
           <td width="300">
-            <p><center><img src="specs/05_NP.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/05_NP.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>No Processing</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/SB_64_Zone1_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/SB_64_Zone1_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Traditional Subband Beamformer (#SB 64)] Zone-1/S1</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/05_Speex_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/05_Speex_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>SpeexDSP + JAECBF</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/SB_64_Zone2_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/SB_64_Zone2_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Traditional Subband Beamformer (#SB 64)] Zone-2/S2</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/05_FTLSTM_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/05_FTLSTM_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>FTLSTM + JAECBF</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/SB_64_Zone3_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/SB_64_Zone3_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Traditional Subband Beamformer (#SB 64)] Zone-3/S3</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/05_Proposed.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/05_Proposed.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Proposed JAECBF w. DTD</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/05_CleanRef.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/05_CleanRef.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Reverberant Near-End Clean Speech</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/SB_64_Zone4_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/SB_64_Zone4_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Traditional Subband Beamformer (#SB 64)] Zone-4/S4</strong></center></p>
           </td>
         </table>
-        </center>
+      </center>
 
-
-        <!-- Audio 06 -->
-        <center>
+      <center>
         <table width="1500" border="1">
           <td width="300">
-            <p><center><img src="specs/06_NP.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/06_NP.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>No Processing</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/MelSB_64_Zone1_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/MelSB_64_Zone1_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Proposed Mel-Subband Beamformer (#SB 64)] Zone-1/S1</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/06_Speex_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/06_Speex_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>SpeexDSP + JAECBF</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/MelSB_64_Zone2_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/MelSB_64_Zone2_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Proposed Mel-Subband Beamformer (#SB 64)] Zone-2/S2</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/06_FTLSTM_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/06_FTLSTM_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>FTLSTM + JAECBF</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/MelSB_64_Zone3_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/MelSB_64_Zone3_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Proposed Mel-Subband Beamformer (#SB 64)] Zone-3/S3</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/06_Proposed.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/06_Proposed.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Proposed JAECBF w. DTD</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/06_CleanRef.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/06_CleanRef.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Reverberant Near-End Clean Speech</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/MelSB_64_Zone4_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/MelSB_64_Zone4_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Proposed Mel-Subband Beamformer (#SB 64)] Zone-4/S4</strong></center></p>
           </td>
         </table>
-        </center>
+      </center>
 
-
-        <!-- Audio 07 -->
-        <center>
+      <center>
         <table width="1500" border="1">
           <td width="300">
-            <p><center><img src="specs/07_NP.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/07_NP.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>No Processing</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/NB_GRNNBF_Zone1_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/NB_GRNNBF_Zone1_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Narrow-Band GRNNBF] Zone-1/S1</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/07_Speex_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/07_Speex_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>SpeexDSP + JAECBF</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/NB_GRNNBF_Zone2_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/NB_GRNNBF_Zone2_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Narrow-Band GRNNBF] Zone-2/S2</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/07_FTLSTM_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/07_FTLSTM_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>FTLSTM + JAECBF</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/NB_GRNNBF_Zone3_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/NB_GRNNBF_Zone3_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Narrow-Band GRNNBF] Zone-3/S3</strong></center></p>
           </td>
           <td width="300">
-            <p><center><img src="specs/07_Proposed.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/07_Proposed.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Proposed JAECBF w. DTD</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/07_CleanRef.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/07_CleanRef.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Reverberant Near-End Clean Speech</strong></center></p>
+            <p><center><img src="Demo/spectrograms/3spk/NB_GRNNBF_Zone4_1.png" width="290" /></center></p>
+            <p><center><audio width="290" controls><source src="Demo/audiofiles/3spk/NB_GRNNBF_Zone4_1.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
+            <p><center><strong>[Narrow-Band GRNNBF] Zone-4/S4</strong></center></p>
           </td>
         </table>
-        </center>
+      </center>
 
-
-        <!-- Audio 08 -->
-        <center>
-        <table width="1500" border="1">
-          <td width="300">
-            <p><center><img src="specs/08_NP.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/08_NP.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>No Processing</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/08_Speex_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/08_Speex_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>SpeexDSP + JAECBF</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/08_FTLSTM_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/08_FTLSTM_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>FTLSTM + JAECBF</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/08_Proposed.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/08_Proposed.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Proposed JAECBF w. DTD</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/08_CleanRef.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/08_CleanRef.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Reverberant Near-End Clean Speech</strong></center></p>
-          </td>
-        </table>
-        </center>
-
-        
-        <!-- Audio 09 -->
-        <center>
-        <table width="1500" border="1">
-          <td width="300">
-            <p><center><img src="specs/09_NP.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/09_NP.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>No Processing</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/09_Speex_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/09_Speex_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>SpeexDSP + JAECBF</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/09_FTLSTM_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/09_FTLSTM_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>FTLSTM + JAECBF</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/09_Proposed.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/09_Proposed.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Proposed JAECBF w. DTD</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/09_CleanRef.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/09_CleanRef.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Reverberant Near-End Clean Speech</strong></center></p>
-          </td>
-        </table>
-        </center>
-
-
-        <!-- Audio 10 -->
-        <center>
-        <table width="1500" border="1">
-          <td width="300">
-            <p><center><img src="specs/10_NP.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/10_NP.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>No Processing</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/10_Speex_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/10_Speex_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>SpeexDSP + JAECBF</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/10_FTLSTM_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/10_FTLSTM_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>FTLSTM + JAECBF</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/10_Proposed.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/10_Proposed.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Proposed JAECBF w. DTD</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/10_CleanRef.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/10_CleanRef.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Reverberant Near-End Clean Speech</strong></center></p>
-          </td>
-        </table>
-        </center>
-
-
-        <!-- Audio 11 -->
-        <center>
-        <table width="1500" border="1">
-          <td width="300">
-            <p><center><img src="specs/11_NP.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/11_NP.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>No Processing</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/11_Speex_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/11_Speex_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>SpeexDSP + JAECBF</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/11_FTLSTM_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/11_FTLSTM_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>FTLSTM + JAECBF</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/11_Proposed.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/11_Proposed.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Proposed JAECBF w. DTD</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/11_CleanRef.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/11_CleanRef.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Reverberant Near-End Clean Speech</strong></center></p>
-          </td>
-        </table>
-        </center>
-
-
-        <!-- Audio 12 -->
-        <center>
-        <table width="1500" border="1">
-          <td width="300">
-            <p><center><img src="specs/12_NP.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/12_NP.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>No Processing</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/12_Speex_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/12_Speex_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>SpeexDSP + JAECBF</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/12_FTLSTM_JAECBF.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/12_FTLSTM_JAECBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>FTLSTM + JAECBF</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/12_Proposed.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/12_Proposed.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Proposed JAECBF w. DTD</strong></center></p>
-          </td>
-          <td width="300">
-            <p><center><img src="specs/12_CleanRef.png" width="290" /></center></p>
-            <p><center><audio width="290" controls><source src="audio/12_CleanRef.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Reverberant Near-End Clean Speech</strong></center></p>
-          </td>
-        </table>
-        </center>
-
-        
-        
-        <!-- 
-        <p class="auto-style5">&nbsp;</p>
-        <p id="performance" , class="auto-style4", style="color:blue;"><strong><u>Enhanced audio samples from various Systems in the study</u></strong></p>
-
-        <center>
-        <table width="1200" border="1">
-          <td width="320">
-            <p><center><img src="specs/01_No_processing.png" height="271" /></center></p>
-            <p><center><audio width="315" controls><source src="audio/01_No_Processing.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>No Processing</strong></center></p>
-          </td>
-          <td width="320">
-            <p><center><img src="specs/01_JRNNBF.png" height="271" /></center></p>
-            <p><center><audio width="315" controls><source src="audio/01_JRNNBF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>JRNNBF</strong></center></p>
-          </td>
-        </table>
-        </center>
+      <p class="bottom-three"></p>
+      <!-- Audio 01 -----------------------------------------------------------------------------------------------------------------------> 
         
 
-        <center>
-        <table width="1200" border="1">
-          <td width="320">
-            <p><center><img src="specs/01_SpeexDSP_JRNN_AEC_BF.png" height="271"  /></center></p>
-            <p><center><audio width="315" controls><source src="audio/01_SpeexDSP_JRNN_AEC_BF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>SpeexDSP + JAECBF</strong></center></p>
-          </td>
-          <td width="320">
-            <p><center><img src="specs/01_FTLSTM_JRNN_AEC_BF.png" height="271"  /></center></p>
-            <p><center><audio width="315" controls><source src="audio/01_FTLSTM_JRNN_AEC_BF.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>FT-LSTM + JAECBF </strong></center></p>
-          </td>
-        </table>
-        </center>
-        
 
-        <center>
-        <table width="1200" border="1">
-          <td width="320">
-            <p><center><img src="specs/01_Proposed.png" height="271" /></center></p>
-            <p><center><audio width="315" controls><source src="audio/01_Proposed.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Proposed JAECBF w. DTD</strong></center></p>
-          </td>
-          <td width="320">
-            <p><center><img src="specs/01_Near_End_Reference.png" height="271" /></center></p>
-            <p><center><audio width="315" controls><source src="audio/01_Near_End.wav" type="audio/wav" >Your browser does not support the audio element.</audio></center></p>
-            <p><center><strong>Near-End Reverberant Speech</strong></center></p>
-          </td>
-        </table>
-        </center> -->
 
+
+
+
+
+      
+      
         <p><strong>----------------------------------------------------------------------------------------------------------------------------------------------------</strong></p>
         <p><strong>More audio samples can be released upon approval of the submission and company's sharing policy.</strong></p>
         <p><strong>----------------------------------------------------------------------------------------------------------------------------------------------------</strong></p>
@@ -566,7 +346,7 @@
             <br> [16] W. Mack and et al., “Deep filtering: Signal extraction and reconstruction using complex time-frequency filters,” IEEE Signal Processing Letters, vol. 27, pp. 61–65, 2019.
 			<br> [17] M. M. Halimeh and et al., “Combining adaptive filtering and complex-valued deep postfiltering for acoustic echo cancella-tion,” in ICASSP, 2021, pp. 121–125.
         </p>
-        <p class="auto-style1"><font color="#999999">Last update: March 24, 2022</font></p>
+        <p class="auto-style1"><font color="#999999">Last update: November 23, 2022</font></p>
 </body>
 
 </html>
